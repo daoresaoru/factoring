@@ -9,7 +9,8 @@ import {
   BarChart3, 
   TableProperties, 
   FileSpreadsheet,
-  Globe
+  Globe,
+  LogOut
 } from 'lucide-react';
 import { DateFilter, TimePeriodOption } from '../types';
 
@@ -25,6 +26,8 @@ interface HeaderProps {
   setLang: (lang: 'ru' | 'en') => void;
   filteredCount: number;
   totalCount: number;
+  userEmail?: string;
+  onLogout?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -39,6 +42,8 @@ export const Header: React.FC<HeaderProps> = ({
   setLang,
   filteredCount,
   totalCount,
+  userEmail,
+  onLogout,
 }) => {
   const periodOptions: { value: TimePeriodOption; labelRu: string; labelEn: string }[] = [
     { value: 'all', labelRu: 'За всё время', labelEn: 'All Time' },
@@ -128,6 +133,17 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <RefreshCw className="w-3.5 h-3.5" />
             </button>
+
+            {/* Logout */}
+            {onLogout && (
+              <button
+                onClick={onLogout}
+                className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-red-400 border border-slate-700 rounded-lg transition"
+                title={userEmail ? `${lang === 'ru' ? 'Выйти' : 'Log out'} (${userEmail})` : (lang === 'ru' ? 'Выйти' : 'Log out')}
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
+            )}
 
             {/* Add Invoice Primary Button */}
             <button
