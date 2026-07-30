@@ -1,0 +1,6 @@
+{
+  "name": "Factoring Tracker",
+  "description": "Modern financial dashboard for monitoring factoring invoices, reserves, QB bank deposits, fees, chargebacks, and broker refunds.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
